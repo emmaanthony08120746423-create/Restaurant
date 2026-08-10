@@ -11,6 +11,13 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -624,9 +631,7 @@ footer {
 
     overflow: hidden;
     isolation: isolate;
-}
 
-footer {
     position: relative;
     margin-top: 45px;
 }
@@ -719,8 +724,6 @@ footer::before {
         border-radius: 15px;
     }
 
-}
-
     .special-dishes {
         padding: 70px 5%;
     }
@@ -735,9 +738,6 @@ footer::before {
 
     .dish-card {
         flex: 0 0 80vw;
-    }
-
-    .dish-image {
         height: 400px;
     }
 
