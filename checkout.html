@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout — SpagKing</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+
+<a href="order.html" class="checkout-back">
+    ← Back to Order
+</a>
+
+
+<main class="checkout">
+
+    <!-- ORDER SUMMARY -->
+    <section class="checkout-section">
+        <h2>Your Order</h2>
+
+        <div id="checkoutItems" class="checkout-items">
+            <!-- Products will be loaded here by JavaScript -->
+        </div>
+
+        <div class="checkout-total">
+            <span>Total</span>
+            <strong id="checkoutTotal">₦0</strong>
+        </div>
+    </section>
+
+
+    <!-- DELIVERY / PICKUP -->
+    <section class="checkout-section">
+
+        <h2>Order Type</h2>
+
+        <div class="order-type">
+
+            <label class="type-option">
+                <input
+                    type="radio"
+                    name="orderType"
+                    value="Delivery"
+                    checked
+                >
+                <span>Delivery</span>
+            </label>
+
+            <label class="type-option">
+                <input
+                    type="radio"
+                    name="orderType"
+                    value="Pickup"
+                >
+                <span>Pickup</span>
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOMER DETAILS -->
+    <section class="checkout-section">
+
+        <h2>Your Details</h2>
+
+        <div class="checkout-form">
+
+            <label>
+                Name
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Your name"
+                    required
+                >
+            </label>
+
+            <label>
+                Phone Number
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="0803 000 0000"
+                    required
+                >
+            </label>
+
+            <label id="addressGroup">
+                Delivery Address
+                <input
+                    type="text"
+                    id="customerAddress"
+                    placeholder="Street, area, landmark"
+                >
+            </label>
+
+            <label>
+                Notes
+                <input
+                    type="text"
+                    id="customerNotes"
+                    placeholder="Extra pepper, no onions..."
+                >
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+    <section class="checkout-section">
+
+        <h2>How would you like to pay?</h2>
+
+        <div class="payment-method">
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Cash on Delivery"
+                    checked
+                >
+
+                <div class="payment-text">
+                    <strong>Cash on Delivery</strong>
+                </div>
+
+            </label>
+
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Bank Transfer"
+                >
+
+                <div class="payment-text">
+                    <strong>Bank Transfer</strong>
+                </div>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL TOTAL -->
+    <section class="checkout-bottom">
+
+        <div class="final-total">
+            <span>Total</span>
+            <strong id="finalTotal">₦0</strong>
+        </div>
+
+        <button
+            type="button"
+            id="placeOrder"
+            class="place-order"
+        >
+            Place Order
+        </button>
+
+    </section>
+
+</main>
+
+
+<script src="checkout.js"></script>
+
+</body>
+</html>
