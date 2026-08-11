@@ -14,8 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let total = 0;
 
+    // =========================
+    // DISPLAY CART
+    // =========================
+
     if (cart.length === 0) {
+
         checkoutItems.innerHTML = "<p>Your cart is empty.</p>";
+
     } else {
 
         checkoutItems.innerHTML = "";
@@ -40,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             checkoutItems.appendChild(itemElement);
+
         });
     }
 
@@ -140,47 +147,35 @@ document.addEventListener("DOMContentLoaded", () => {
         // WHATSAPP MESSAGE
         // =========================
 
-        let message =
-            `*NEW SPAGKING ORDER*%0A%0A`;
+        let message = `*NEW SAVANNA TABLE ORDER*\n\n`;
 
-        message +=
-            `*Customer:* ${name}%0A`;
-
-        message +=
-            `*Phone:* ${phone}%0A`;
-
-        message +=
-            `*Order Type:* ${orderType}%0A`;
+        message += `*Customer:* ${name}\n`;
+        message += `*Phone:* ${phone}\n`;
+        message += `*Order Type:* ${orderType}\n`;
 
         if (orderType === "Delivery") {
-            message +=
-                `*Address:* ${address}%0A`;
+            message += `*Address:* ${address}\n`;
         }
 
-        message +=
-            `*Payment:* ${payment}%0A`;
+        message += `*Payment:* ${payment}\n`;
 
         if (notes) {
-            message +=
-                `*Notes:* ${notes}%0A`;
+            message += `*Notes:* ${notes}\n`;
         }
 
-        message += `%0A*ORDER ITEMS*%0A`;
+        message += `\n*ORDER ITEMS*\n`;
 
-
+        // 🔥 EVERY ITEM IN THE CART
         cart.forEach(item => {
 
-            const itemTotal =
-                item.price * item.quantity;
+            const itemTotal = item.price * item.quantity;
 
             message +=
-                `• ${item.name} x${item.quantity} — ₦${itemTotal.toLocaleString()}%0A`;
+                `• ${item.name} x${item.quantity} — ₦${itemTotal.toLocaleString()}\n`;
 
         });
 
-
-        message +=
-            `%0A*TOTAL: ₦${total.toLocaleString()}*`;
+        message += `\n*TOTAL: ₦${total.toLocaleString()}*`;
 
 
         // =========================
@@ -190,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const whatsappNumber = "2348120746423";
 
         const whatsappURL =
-            `https://wa.me/${whatsappNumber}?text=${message}`;
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
         window.open(whatsappURL, "_blank");
 

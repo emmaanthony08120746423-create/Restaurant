@@ -1,10 +1,12 @@
 
-
 // ===============================
 // CART
 // ===============================
 
 let cart = [];
+
+
+const nextBtn = document.getElementById("nextBtn");
 
 
 // ===============================
@@ -168,6 +170,7 @@ function updateCartDisplay() {
 // ===============================
 // NEXT BUTTON
 // ===============================
+
 
 nextBtn.addEventListener("click", () => {
 
