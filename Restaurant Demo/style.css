@@ -1,0 +1,831 @@
+
+
+```css
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #F8F1E5;
+    color: #171717;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    padding: 28px 6%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-top {
+    position: fixed;
+    top: 20px;
+    left: 5%;
+    right: 5%;
+    width: auto;
+    max-width: 90%;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    min-height: calc(100vh - 90px);
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* FOOD BACKGROUND */
+
+.hero-food {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-food-bg {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.8s ease;
+}
+
+.hero:hover .hero-food-bg {
+    transform: scale(1.05);
+}
+
+
+/* RED/DARK LAYER OVER FOOD */
+
+.hero-food-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: linear-gradient(
+        135deg,
+        rgba(70, 10, 10, 0.30),
+        rgba(0, 0, 0, 0.42)
+    );
+}
+
+
+/* HERO TEXT */
+
+.hero-title {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+    color: white;
+}
+
+.hero-title > p:first-child {
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    color: #F6A15A;
+}
+
+.hero-title h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(5rem, 13vw, 12rem);
+    line-height: 0.78;
+    font-weight: 600;
+    letter-spacing: -7px;
+}
+
+.hero-title h1 span {
+    display: block;
+    font-style: italic;
+    color: #F6A15A;
+}
+
+.hero-description {
+    max-width: 350px;
+    margin: 35px auto 0;
+
+    line-height: 1.7;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.brand-visual {
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #F8F1E5;
+}
+
+.top-order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    transition: all 0.3s ease;
+}
+
+.top-order {
+    background: #A61B1B;
+    border-color: #A61B1B;
+}
+
+.top-order:hover {
+    background: #E86A17;
+    border-color: #E86A17;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 25px rgba(166, 27, 27, 0.3);
+}
+
+
+/* =========================
+   FOOD ANIMATIONS
+========================= */
+
+@keyframes floatOne {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(2deg);
+    }
+}
+
+@keyframes floatTwo {
+    0%, 100% {
+        transform: translateY(0) rotate(5deg);
+    }
+
+    50% {
+        transform: translateY(-22px) rotate(-3deg);
+    }
+}
+
+@keyframes floatThree {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(4deg);
+    }
+}
+
+
+/* =========================
+   MENU INTRO
+========================= */
+
+.menu-intro {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 28px 6%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    background: #ed1735;
+}
+
+/* =========================================
+   BOTH CARDS
+========================================= */
+
+.menu-box,
+.menu-order {
+    position: relative;
+
+    min-height: 430px;
+    padding: 55px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 35px;
+
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/* =========================================
+   MENU BOX
+========================================= */
+
+.menu-box {
+    background: #A61B1B;
+    color: #F8F1E5;
+}
+
+
+/* MENU FOOD IMAGE */
+
+.menu-box::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url("images/menu-bg.jfif");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.90;
+
+    z-index: -2;
+}
+
+
+/* MENU RED SHADE */
+
+.menu-box::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(166, 27, 27, 0.55);
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   ORDER BOX
+========================================= */
+
+.menu-order {
+    color: #F8F1E5;
+
+    border: none;
+}
+
+
+/* ORDER FOOD IMAGE */
+
+.menu-order::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url("images/order-bg.jfif");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.90;
+
+    z-index: -2;
+}
+
+
+/* ORDER RED SHADE */
+
+.menu-order::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(166, 27, 27, 0.55);
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   CONTENT ABOVE IMAGES
+========================================= */
+
+.menu-box > *,
+.menu-order > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.small-title {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #eee4da;
+}
+
+
+.menu-box h2,
+.section-heading h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.9;
+
+    margin-bottom: 30px;
+    color: #eee4da;
+}
+
+
+.menu-box h2 span,
+.section-heading h2 span {
+    display: block;
+    font-style: italic;
+    color: #e21837;
+}
+
+
+/* =========================================
+   MENU DESCRIPTION
+========================================= */
+
+.menu-box > p:not(.small-title) {
+    max-width: 430px;
+
+    line-height: 1.7;
+    opacity: 0.8;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.dark-button,
+.outline-button {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px 22px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+/* =========================================
+   MENU BUTTON
+========================================= */
+
+.dark-button {
+    background: #F8F1E5;
+    color: #A61B1B;
+    border: none;
+}
+
+.dark-button:hover {
+    background: #F6A15A;
+    color: #171717;
+    transform: translateX(5px);
+}
+
+
+/* ORDER BUTTON */
+
+.outline-button {
+    background: #F8F1E5;
+    color: #A61B1B;
+
+    border: 1px solid #F8F1E5;
+}
+
+.outline-button:hover {
+    background: #F6A15A;
+    color: #171717;
+
+    border-color: #F6A15A;
+
+    transform: translateX(5px);
+}
+
+
+/* =========================================
+   ORDER TEXT
+========================================= */
+
+.menu-order p {
+    margin-bottom: 15px;
+
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #F8F1E5;
+}
+
+
+.menu-order h3 {
+    max-width: 550px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    line-height: 0.95;
+
+    margin-bottom: 35px;
+
+    color: #F8F1E5;
+}
+
+/* =========================
+   SPECIAL DISHES
+========================= */
+
+.special-dishes {
+    padding: 100px 6%;
+    background: #201f1f;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 50px;
+}
+
+.section-heading h2 span {
+    color: #A61B1B;
+}
+
+.scroll-hint {
+    font-size: 0.8rem;
+    opacity: 0.55;
+}
+
+.dish-scroll {
+    display: flex;
+    gap: 25px;
+
+    overflow-x: auto;
+    padding-bottom: 20px;
+
+    scrollbar-width: none;
+}
+
+.dish-card {
+    flex: 0 0 82vw;
+}
+
+.dish-scroll {
+    gap: 18px;
+    padding-right: 5vw;
+}
+
+.dish-scroll {
+    scroll-snap-type: x mandatory;
+}
+
+.dish-card {
+    scroll-snap-align: start;
+}
+
+.dish-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.dish-image {
+    height: 430px;
+
+    overflow: hidden;
+
+    background: #F8F1E5;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.dish-card:hover .dish-image img {
+    transform: scale(1.06);
+}
+
+.dish-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 18px;
+}
+
+.dish-info h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+
+    margin-bottom: 5px;
+    color: #eee4da;
+}
+
+.dish-info p {
+    font-size: 0.9rem;
+    opacity: 0.65;
+    color: #eee4da;
+}
+
+.dish-order {
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #A61B1B;
+
+    transition: 0.3s ease;
+}
+
+.dish-order:hover {
+    color: #E86A17;
+    transform: translateX(4px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: relative;
+    margin: 80px 0 0;
+    padding: 80px 6% 30px;
+
+    min-height: 500px;
+
+    color: #eee4da;
+
+    border-radius: 55px 55px 0 0;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    position: relative;
+    margin-top: 45px;
+}
+
+
+/* FOOD IMAGE */
+.footer-bg {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 1;
+
+    z-index: -2;
+}
+
+
+/* DARK FADE */
+footer::before {
+    content: "";
+    top: -170px;
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(23, 23, 23, 0.35);
+
+    z-index: -1;
+}
+
+
+/* CONTENT */
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+
+    .menu-intro {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+
+        padding: 20px 5%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        overflow: hidden;
+    }
+
+    .menu-box,
+    .menu-order {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        min-height: 250px;
+
+        padding: 25px 20px;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+    }
+
+    .menu-box h2,
+    .menu-order h3 {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 2.2rem;
+        line-height: 0.95;
+
+        overflow-wrap: break-word;
+    }
+
+    .dark-button,
+    .outline-button {
+        width: fit-content;
+        max-width: 100%;
+
+        padding: 12px 16px;
+        font-size: 0.75rem;
+    }
+
+}
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.footer-links {
+    display: flex;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.footer-links > div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: #F6A15A;
+}
+
+.footer-links a {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: #F6A15A;
+    transform: translateX(4px);
+}
+
+
+/* =========================
+   FOOTER BRAND
+========================= */
+
+.footer-brand h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.9;
+    margin-bottom: 15px;
+}
+
+.footer-brand h2 span {
+    display: block;
+    font-style: italic;
+    color: #F6A15A;
+}
+
+.footer-brand p {
+    opacity: 0.7;
+}
+
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+.footer-bottom {
+    width: 100%;
+    margin-top: 80px;
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
