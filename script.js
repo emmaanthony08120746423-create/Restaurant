@@ -1,5 +1,9 @@
 
 
+// ========================================
+// MENU CATEGORY SWITCHING
+// ========================================
+
 const categoryButtons = document.querySelectorAll(".category");
 const categoryContents = document.querySelectorAll(".category-content");
 
@@ -17,12 +21,12 @@ categoryButtons.forEach(button => {
         // Add active to clicked button
         button.classList.add("active");
 
-        // Hide all sections
+        // Hide all category sections
         categoryContents.forEach(section => {
             section.classList.remove("active");
         });
 
-        // Show selected section
+        // Show selected category
         const selectedSection = document.getElementById(category);
 
         if (selectedSection) {
@@ -31,4 +35,49 @@ categoryButtons.forEach(button => {
 
     });
 
+});
+
+
+// ========================================
+// SCROLL REVEAL ANIMATION
+// ========================================
+
+const revealElements = document.querySelectorAll(
+    ".menu-box, .menu-order, .section-heading, .dish-card, .footer-brand, .footer-links, .footer-bottom"
+);
+
+console.log("SCRIPT.JS IS RUNNING");
+console.log("Elements found:", revealElements.length);
+
+
+// Add animation class
+revealElements.forEach(element => {
+    element.classList.add("scroll-reveal");
+});
+
+
+// Create observer
+const revealObserver = new IntersectionObserver((entries, observer) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            console.log("Animating:", entry.target);
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(entry.target);
+        }
+
+    });
+
+}, {
+    threshold: 0.1
+});
+
+
+// Observe elements
+revealElements.forEach(element => {
+    revealObserver.observe(element);
 });
